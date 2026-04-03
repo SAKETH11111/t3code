@@ -162,6 +162,12 @@ export function resolveSidebarNewThreadEnvMode(input: {
   return input.requestedEnvMode ?? input.defaultEnvMode;
 }
 
+export function resolveDesktopSidebarHeaderPaddingClassName(input: {
+  isMacDesktop: boolean;
+}): string {
+  return input.isMacDesktop ? "px-4 pl-[90px]" : "px-4";
+}
+
 export function resolveSidebarNewThreadSeedContext(input: {
   projectId: string;
   defaultEnvMode: SidebarNewThreadEnvMode;

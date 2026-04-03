@@ -4,6 +4,7 @@ import {
   createThreadJumpHintVisibilityController,
   getVisibleSidebarThreadIds,
   resolveAdjacentThreadId,
+  resolveDesktopSidebarHeaderPaddingClassName,
   getFallbackThreadIdAfterDelete,
   getVisibleThreadsForProject,
   getProjectSortTimestamp,
@@ -55,6 +56,18 @@ describe("hasUnseenCompletion", () => {
         session: null,
       }),
     ).toBe(true);
+  });
+});
+
+describe("resolveDesktopSidebarHeaderPaddingClassName", () => {
+  it("preserves the traffic-light inset on mac desktop", () => {
+    expect(resolveDesktopSidebarHeaderPaddingClassName({ isMacDesktop: true })).toBe(
+      "px-4 pl-[90px]",
+    );
+  });
+
+  it("uses symmetric padding on non-mac desktops", () => {
+    expect(resolveDesktopSidebarHeaderPaddingClassName({ isMacDesktop: false })).toBe("px-4");
   });
 });
 
